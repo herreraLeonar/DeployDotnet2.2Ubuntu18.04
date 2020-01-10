@@ -3,6 +3,8 @@ deplying dotnet core 2.2 into ubuntu 18.04 with apache2 and pm2
 
 # Deploy net core 2.2 in AWS Instance ubuntu 18.04 apache2 pm2
 
+more youtube https://www.youtube.com/watch?v=a-YE5mYxRs8
+
 # Add into startup.cs
 
 ``function configure(){
