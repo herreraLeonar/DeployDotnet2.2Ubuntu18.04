@@ -1,21 +1,22 @@
-# DeployDotnet2.2Ubuntu18.04
+# Deploy net core 2.2 in AWS Instance ubuntu 18.04 apache2 pm2
 deplying dotnet core 2.2 into ubuntu 18.04 with apache2 and pm2
 
 # Deploy net core 2.2 in AWS Instance ubuntu 18.04 apache2 pm2
 
 # Add into startup.cs
 
-``Function configure(){
+``function configure(){
   app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-            app.UseHttpsRedirection();
+  {
+    ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
+  });
+  app.UseHttpsRedirection();
+  //authentication is important position above UseMvc
+  app.UseAuthentication();
+};``
 
-            //authentication is important position above UseMvc
-            app.UseAuthentication();
-}``
 # in Startup.ConfigureServices:
+
 ``services.Configure<ForwardedHeadersOptions>(options =>
 {
     options.KnownProxies.Add(IPAddress.Parse("10.0.0.100"));
